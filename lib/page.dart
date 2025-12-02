@@ -488,6 +488,7 @@ class Dipak extends StatefulWidget {
 
 class _DipakState extends State<Dipak> {
   int selectindex=0;
+  int iconsindex=-1;
   List order=[
     "To Pay",
     "To Receive",
@@ -502,6 +503,11 @@ class _DipakState extends State<Dipak> {
     "img/order2.png",
     "img/order3.png",
     "img/order4.png",
+  ];
+  List icons=[
+    Icons.print,
+    Icons.filter,
+    Icons.settings,
   ];
   @override
   Widget build(BuildContext context) {
@@ -570,16 +576,48 @@ class _DipakState extends State<Dipak> {
                     ),
                     
                   ),
-                  CircleAvatar(
-                    child: Center(child: Icon(Icons.print,color: Colors.blue,)),
+                 
+                  Container(
+                    height: 50,
+                    width:150,
+                   child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: icons.length,
+                    itemBuilder: (context, index) {
+                      return  Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              iconsindex=index;
+                            });
+
+                          },
+                              child: Stack(
+                                children: [
+                                  CircleAvatar(
+                                      radius: 15,
+                                             child: Center(child: Icon(icons[index],color: iconsindex==index?Colors.blue:null,)),
+                                          ),
+                                  Positioned(
+                                    right: 0,
+                                    child: Container(
+                                    height: 10,
+                                    width: 10,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      color:iconsindex==index ? Colors.blue:null
+                                    ),
+                                    
+                                  ))        
+                                ],
+                              ),
+                     
+                        ),
+                     );
+                    },
+                   ),
                   ),
-                  CircleAvatar(
-                    child: Center(child: Icon(Icons.filter,color: Colors.blue,)),
-                  ),
-                  CircleAvatar(
-                    child: Center(child: Icon(Icons.settings,color: Colors.blue,)),
-                  ),
-          
                 ],
               ),
               ),
@@ -681,7 +719,7 @@ class _DipakState extends State<Dipak> {
                         child: InkWell(
                           onTap: () {
                             setState(() {
-                              selectindex=index;
+                            selectindex=index;
                             });
                           },
                           child: Stack(
