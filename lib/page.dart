@@ -662,11 +662,16 @@ class _DipakState extends State<Dipak> {
                           ],
                         ),
                       ),
-                      CircleAvatar(
+                     InkWell(
+                      onTap: () {
+                        print("Hii");
+                      },
+                      child: CircleAvatar(
                         radius: 15,
                         backgroundColor: Colors.blue,
                         child: Icon(Icons.arrow_right_alt_rounded, color: const Color.fromARGB(255, 255, 255, 255),size: 30,),
                       ),
+                     ),
                     ],
                   ),
                 ),
@@ -794,3 +799,297 @@ class _DipakState extends State<Dipak> {
   
   }
 }
+
+
+class Like extends StatefulWidget {
+  const Like({super.key});
+
+  @override
+  State<Like> createState() => _LikeState();
+}
+
+class _LikeState extends State<Like> {
+  int selectindex = 0;
+  List view = ["", "", "", "", ""];
+  List screen = [
+    MyWidget(),
+    Center(child: Text("Likes Coming Soon")),
+    Center(child: Text("Menu Coming Soon")),
+    Center(child: Text("Cart Coming Soon")),
+    Dipak(),
+  ];
+  List viewimg=[
+    "img/view1.png",
+    "img/view2.png",
+    "img/view3.png",
+    "img/view4.png",
+    "img/view5.png",
+  ];
+  List highimg=[{
+   "im":"img/shoppinggirl.png",
+   "price":"\$17.00"
+  },
+  {
+
+   "im":"img/shandel.png",
+   "price":"\$12.00"
+  },
+{
+
+   "im":"img/gogal.png",
+   "price":"\$7.00"
+},
+{
+
+   "im":"img/hair.png",
+   "price":"\$3.80"
+},
+{
+
+   "im":"img/shoppinggirl.png",
+   "price":"\$16.00"
+},
+  {
+    "im":"img/shandel.png",
+  "price":"\$12.50"
+  }
+   
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return  Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15.0),
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                height: 50,
+                width: double.infinity,
+
+                padding: EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('9.41'),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                      children: [
+                        Icon(Icons.signal_cellular_alt_2_bar_rounded),
+                        Icon(Icons.wifi),
+                        Icon(Icons.battery_full_rounded),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 50,
+                width: double.infinity,
+                child: Text(
+                  'Wishlist',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Container(
+                height: 50,
+                width: double.infinity,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Recently Viewed',
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.blue,
+                      child: Center(
+                        child: Icon(
+                          Icons.arrow_forward,
+                          size: 30,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                height: 100,
+                width: double.infinity,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: CircleAvatar(
+                        radius: 40,
+                        backgroundImage: AssetImage(viewimg[index]),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Container(
+              height: 400,
+                child: ListView.builder(
+                  
+                  itemCount: highimg.length,
+                  itemBuilder: (context, index) {
+                    return  Container(
+                    height: 150,
+                    width: double.infinity,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: 130,
+                          child: Stack(
+                            children: [
+                              Container(
+                                height: 120,
+                                width: 120,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(18),
+                                  image: DecorationImage(
+                                    image: AssetImage(highimg[index]['im']),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 10,
+                                left: 5,
+                                child: CircleAvatar(
+                                  radius: 20,
+                                  child: Center(
+                                    child: Icon(Icons.delete, color: Colors.red),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 120,
+                          width: 180,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: 150,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  
+                                  children: [
+                                    Text('Lorem ipsum dolor sit amet consectetur.'),
+                                    Text(
+                                      highimg[index]["price"],
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 120,
+                                      child: Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            height: 30,
+                                            width: 50,
+                                            decoration: BoxDecoration(
+                                              color: const Color.fromARGB(
+                                                255,
+                                                172,
+                                                194,
+                                                201,
+                                              ),
+                                              borderRadius: BorderRadius.circular(
+                                                10,
+                                              ),
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                'Pink',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(width: 20),
+                                          Container(
+                                            height: 30,
+                                            width: 50,
+                                            decoration: BoxDecoration(
+                                              color: const Color.fromARGB(
+                                                255,
+                                                172,
+                                                194,
+                                                201,
+                                              ),
+                                              borderRadius: BorderRadius.circular(
+                                                10,
+                                              ),
+                                            ),
+                                            child: Center(
+                                              child: Text(
+                                                'M',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                height: 120,
+                                alignment: Alignment.bottomCenter,
+                                child: Icon(
+                                  Icons.add_box_outlined,
+                                  color: Colors.blue,
+                                  size: 30,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                         
+                  },
+                             ),
+              ),
+            ],
+          ),
+        ),
+      );
+  
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
