@@ -489,6 +489,13 @@ class Dipak extends StatefulWidget {
 class _DipakState extends State<Dipak> {
   int selectindex=0;
   int iconsindex=-1;
+   List viewimg=[
+    "img/view1.png",
+    "img/view2.png",
+    "img/view3.png",
+    "img/view4.png",
+    "img/view5.png",
+  ];
   List order=[
     "To Pay",
     "To Receive",
@@ -688,7 +695,9 @@ class _DipakState extends State<Dipak> {
                   width: double.infinity,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 10,
+                    itemCount: viewimg.length,
+                    physics: BouncingScrollPhysics(),
+                    shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -697,7 +706,7 @@ class _DipakState extends State<Dipak> {
                           width: 100,
                           child: CircleAvatar(
                             radius: 50,
-                            backgroundImage: AssetImage('img/girl.png'),
+                            backgroundImage: AssetImage(viewimg[index]),
                           ),
                         ),
                       );
@@ -718,6 +727,8 @@ class _DipakState extends State<Dipak> {
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: order.length,
+                    physics: BouncingScrollPhysics(),
+                    shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.all(10.0),
